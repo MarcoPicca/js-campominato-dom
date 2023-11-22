@@ -37,15 +37,33 @@ buttonGame.addEventListener('click', function () {
         return newSquareElement;
 
     }
+
+    let bomb = [];                                               // definisco l'array
+        let sixteenBomb = 17;                                        // definisco quanto è lungo l'array bomb
+
+        while (bomb.length < sixteenBomb){                           // finchè non è lungo abbastanza
+
+            let newBomb = Math.floor(Math.random() * 100) + 1;        // genero un nuovo numero random
+
+            if (!bomb.includes(newBomb)){                            // se il mio array non contiene il numero random della bomba
+                
+                bomb.push(newBomb)                                   // lo aggiungo all'array bomb
+            }
+
+        }
+
+        console.log(bomb);
     
     
     
     
+    // function getRandomNumber (minNumber, maxNumber) {
+    //     return Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
+    // }  
     
     
     for (let i = 1; i <= 100; i++){
         const currentSquare = getNewSquare();
-
 
         
 
@@ -54,38 +72,51 @@ buttonGame.addEventListener('click', function () {
 
         // Quando l'utente clicca su ogni cella,
         //  la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.    
+        let scoreContent = document.querySelector('score-content');
     
         currentSquare.addEventListener('click', function (){
             currentSquare.classList.toggle('clicked');
-            console.log(squareContent);
+                
+            console.log(squareContent); 
+            
         });
         mainContentEl.appendChild(currentSquare);
 
 
         // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
 
-        let bomb = [];                                               // definisco l'array
-        let sixteenBomb = 16;                                        // definisco quanto è lungo l'array bomb
-
-        while (bomb.length < sixteenBomb){                           // finchè non è lungo abbastanza
-
-            let newBomb = Math.floor(Math.random() * 16) + 1;        // genero un nuovo numero random
-
-            if (!bomb.includes(newBomb)){                            // se il mio array non contiene il numero random della bomba
-                
-                bomb.push(newBomb)                                   // lo aggiungo all'array bomb
-            }
-            break;
-        }
-
-        console.log(bomb);
-
+        
 
         // Ogni cella ha un numero progressivo, da 1 a 100.
 
         const squareContent = i;
     
         currentSquare.innerHTML += `<span> ${squareContent} </span>`;
+
+
+        // Quando l'utente clicca su ogni cella,
+        //  la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
+
+        currentSquare.addEventListener('click', function (){
+           
+            currentSquare.classList.toggle('clicked');
+            if (bomb.includes(i)){
+                // currentSquare.classList.add('bg-red');
+                alert('GameOver');
+                mainContentEl.innerHTML = '';
+            } else {
+                currentSquare.classList.add('bg-gold');
+                for(let i = 0; i === currentSquare.onclick; i++){
+                    score = i
+                    if (!bomb.includes(i)){
+                        score = + 1;
+                    }
+                    console.log('your score is:' + score);
+                }
+
+            }
+        });
+        mainContentEl.appendChild(currentSquare);
     }   
 });
 
