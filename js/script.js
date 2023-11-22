@@ -47,27 +47,48 @@ buttonGame.addEventListener('click', function () {
         const currentSquare = getNewSquare();
 
 
-        // Ogni cella ha un numero progressivo, da 1 a 100.
+        
 
-        const squareContent = i
-    
-        currentSquare.innerHTML += `<span> ${squareContent} </span>`;
+        
+
+
+        // Quando l'utente clicca su ogni cella,
+        //  la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.    
     
         currentSquare.addEventListener('click', function (){
             currentSquare.classList.toggle('clicked');
             console.log(squareContent);
         });
         mainContentEl.appendChild(currentSquare);
-    }
 
-    let bomb = [];
 
-    for (let i = 1; i <= 16; i++){
+        // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
 
-            bomb.push(i);
-    }
-    if (bomb.length === 16) {
+        let bomb = [];                                               // definisco l'array
+        let sixteenBomb = 16;                                        // definisco quanto è lungo l'array bomb
+
+        while (bomb.length < sixteenBomb){                           // finchè non è lungo abbastanza
+
+            let newBomb = Math.floor(Math.random() * 16) + 1;        // genero un nuovo numero random
+
+            if (!bomb.includes(newBomb)){                            // se il mio array non contiene il numero random della bomba
+                
+                bomb.push(newBomb)                                   // lo aggiungo all'array bomb
+            }
+            break;
+        }
+
         console.log(bomb);
-    }
 
+
+        // Ogni cella ha un numero progressivo, da 1 a 100.
+
+        const squareContent = i;
+    
+        currentSquare.innerHTML += `<span> ${squareContent} </span>`;
+    }   
 });
+
+
+
+
