@@ -60,7 +60,8 @@ buttonGame.addEventListener('click', function () {
     // function getRandomNumber (minNumber, maxNumber) {
     //     return Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
     // }  
-    
+    let score = 0;
+    let scoreContent = document.querySelector('score-content');   
     
     for (let i = 1; i <= 100; i++){
         const currentSquare = getNewSquare();
@@ -106,15 +107,13 @@ buttonGame.addEventListener('click', function () {
                 mainContentEl.innerHTML = '';
             } else {
                 currentSquare.classList.add('bg-gold');
-                for(let i = 0; i === currentSquare.onclick; i++){
-                    score = i
-                    if (!bomb.includes(i)){
-                        score = + 1;
-                    }
-                    console.log('your score is:' + score);
-                }
-
+                score++;
+                console.log('your score is:' + score);
+                
             }
+            
+
+
         });
         mainContentEl.appendChild(currentSquare);
     }   
